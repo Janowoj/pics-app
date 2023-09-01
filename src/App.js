@@ -1,6 +1,17 @@
+import searchImages from "./api";
+import SearchBar from "./components/SearchBar";
+
+
 function App() {
 
-    return <div>App</div>
+    const handleSubmit = (term) => {
+        // 
+        searchImages(term);
+    }
+
+    return <div>
+        <SearchBar onSubmit={handleSubmit} />
+    </div>
 
 }
 
@@ -53,4 +64,33 @@ export default App;
 
 // we cannot make request like this:
 //  const fatchData = () => {
-// const reponse = makeRequest()}
+// const reponse = makeRequest()
+//
+// console.log(response)
+//}
+
+// JS engine will not wait for the response to come back!
+// JS engine will just move on to the next line of code
+// and try to console.log(response) which will be undefined
+
+// Our request should look like this:
+//  const fatchData = () => {
+// const reponse = makeRequest()
+//
+// Dear JS engine, please wait for the response to come back
+// and then console.log(response)
+//}
+
+// so...
+
+// const fatchData = async () => {
+//     const resopnse = await axios.get(url, {
+//         headers: {
+//             Authorization:
+//         },
+//         params: {
+//             query: ''
+//         }
+//     });
+// }
+

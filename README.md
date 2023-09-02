@@ -49,6 +49,35 @@ Use props to communicate from the parent to the child: App can sen the list of i
 
 How to use search term, which is in SearchBar (child component) in seatchImages(), which is in parent component?
 
+Also with props (in some cases it is possible to go up to the parent component)/\.
+
+
+// Now we need to get the value from the input element?
+
+// The way React handles form elements like 
+// input, textarea, select, radio buttons, checkbox etc is a little bit weird.
+
+// Handling Text Inputs:
+//  1. Create a new piece of state to track the value of input
+//  2. Create an event handler to watch for the 'onChange' event
+//  3. Whem the 'onChange' event is fired, get the value of the input
+//  4. Take that value from the input and use it to update state
+//  5. Pass your state to the input as a value prop
+
+What happens, whenever the user types something into an input:
+
+User types in input --> Browser updates the text in the input -->  Browser triggers an event to say that input  was updated --> We read a value from an input, update state --> State update! Component rerenders --> We provide the 'value' prop to input - REACT CHANGES AN INPUT VALUE (this is strange, because it overwrites an existing value) --> again user types an input
+
+Why we should do it this way?
+
+We have control under value of the input from the browser!
+
+Need to read the value of the input?
+Look at 'term' state.
+Need to update the value of the input?
+Call 'useTerm' state.
+Component rerenders with every key-press - it is very useful to add more advanced features now.
+
 
 
 

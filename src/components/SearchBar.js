@@ -5,12 +5,12 @@ function SearchBar({ onSubmit }) {
     // const handleClick = () => {
     //     onSubmit('cars'); // output: e.g. do a search with cars 
     // }
-    const [term, setTerm] = useState('cars');
+    const [term, setTerm] = useState('');
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
         // console.log('I need to tell the parent component about some data that was entered');
-        onSubmit('cars');
+        onSubmit(term);
 
     }
     // for onSubmit('cars') the output is 'Do a search with cars'

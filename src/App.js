@@ -4,10 +4,13 @@ import SearchBar from "./components/SearchBar";
 
 function App() {
 
-    const handleSubmit = (term) => {
-        console.log('Do a search with', term);
-        // searchImages(term);
+    const handleSubmit = async (term) => {
+        // console.log('Do a search with', term);
+        const result = await searchImages(term); // nothing is displayed yet
+        console.log(result); // request is not yet completed: by console.log(results) we receive a promise
     }
+
+    // go to the Network/Fetch and check the status of HTTP request. Click on the Name and check the results
 
     return <div>
         <SearchBar onSubmit={handleSubmit} />

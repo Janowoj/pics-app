@@ -1,3 +1,4 @@
+import './SearchBar.css';
 import { useState } from 'react';
 
 function SearchBar({ onSubmit }) {
@@ -25,9 +26,9 @@ function SearchBar({ onSubmit }) {
     }
 
     return (
-        <div>
+        <div className='search-bar'>
             <form onSubmit={handleFormSubmit}>
-                Confirm your change: {term}
+                <label>Enter Search Term</label>
                 <input value={term} onChange={handleChange} />
             </form>
             {/* <button onClick={handleClick}>Press to submit</button> */}
@@ -40,7 +41,7 @@ export default SearchBar;
 // how to detect when a user presses enter?
 // There are couple diffrent ways:
 
-// 1. We can wrap the input in a form element,
+// 1. We can wrap the input in a FORM element,
 // then if we type something into and press enter
 // we can listen for the form's SUBMIT EVENT using html feature
 
@@ -54,7 +55,7 @@ export default SearchBar;
 
 // we can see that message for a second in the console!
 
-// Browser not only triggers the submit event on the form element,
+// Browser not only triggers the submit event on the FORM element,
 // but also makes something unexpected! (some default behavior)
 // Browser AUTOMATICALLY collects all the information from the input
 // inside this form and makes a POST request to the server

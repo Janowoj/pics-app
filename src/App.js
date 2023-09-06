@@ -1,19 +1,27 @@
-import searchImages from "./api";
+import { useState } from "react";
 import SearchBar from "./components/SearchBar";
+import ImageList from "./components/ImageList"
+import searchImages from "./api";
 
 
 function App() {
 
+    const [images, setImages] = useState([]);
+
+    // from the perspective of 'App', images is STATE
+    // from perspective of 'ImageList', images is PROPS
+
     const handleSubmit = async (term) => {
         // console.log('Do a search with', term);
         const result = await searchImages(term); // nothing is displayed yet
-        console.log(result); // request is not yet completed: by console.log(results) we receive a promise
+        setImages(result); // without async/await the request is not yet completed: by console.log(results) we receive a promise
     }
 
     // go to the Network/Fetch and check the status of HTTP request. Click on the Name and check the results
 
     return <div>
         <SearchBar onSubmit={handleSubmit} />
+        <ImageList images={images} />
     </div>
 
 }
@@ -97,3 +105,9 @@ export default App;
 //     });
 // }
 
+// ==================================================================================================== //
+
+// 1. After doing a search, we want to update the content on the screen
+// with the new list of images, so we have to consider a STATE system
+
+//  2. When you update your state, the component and all of its children are re-rendered.
